@@ -5,9 +5,10 @@ const FormContext = createContext();
 
 const FormProvider = ({ children }) => {
   const [form, setForm] = useState([]);
+  const [formData, setFormData] = useState({});
 
   return (
-    <FormContext.Provider value={{ form, setForm }}>
+    <FormContext.Provider value={{ form, setForm, formData, setFormData }}>
       {children}
     </FormContext.Provider>
   );

@@ -13,7 +13,7 @@ const Homepage = () => {
           Build a form
         </button>
       </Link>
-      {form ? (
+      {form.length !== 0 ? (
         <RealForm />
       ) : (
         <div className="text-center px-5">

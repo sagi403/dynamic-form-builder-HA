@@ -9,6 +9,7 @@ const FormField = () => {
     required: false,
     options: "",
   });
+  const [labelExists, setLabelExists] = useState(false);
 
   const fieldTypes = ["text", "checkbox", "radio", "dropdown"];
 
@@ -16,6 +17,15 @@ const FormField = () => {
     e.preventDefault();
 
     if (!newField.type || !newField.label) return;
+
+    // Check for duplicate label
+    const isLabelExists = form.find(field => field.label === newField.label);
+
+    if (isLabelExists) {
+      setLabelExists(true);
+      return;
+    }
+    setLabelExists(false);
 
     if (newField.type === "dropdown") {
       newField.options = newField.options.split(",");
@@ -75,6 +85,11 @@ const FormField = () => {
           placeholder="Field label"
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
+        {labelExists && (
+          <p className="text-red-500 text-xs italic">
+            This label already exists.
+          </p>
+        )}
       </div>
 
       {newField.type === "dropdown" && (
