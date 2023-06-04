@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { FormContext } from "../context/FormContext";
+import RealForm from "../components/RealForm";
 
 const Homepage = () => {
+  const { form } = useContext(FormContext);
+
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-200">
       <Link to="/form-builder">
@@ -8,15 +13,19 @@ const Homepage = () => {
           Build a form
         </button>
       </Link>
-      <div className="text-center px-5">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-          Welcome to Dynamic Form Builder
-        </h1>
-        <p className="text-lg md:text-xl lg:text-2xl text-gray-700">
-          Experience the most intuitive way to create and manage forms. Click on
-          &apos;Build a form&apos; to start crafting your own!
-        </p>
-      </div>
+      {form ? (
+        <RealForm />
+      ) : (
+        <div className="text-center px-5">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+            Welcome to Dynamic Form Builder
+          </h1>
+          <p className="text-lg md:text-xl lg:text-2xl text-gray-700">
+            Experience the most intuitive way to create and manage forms. Click
+            on &apos;Build a form&apos; to start crafting your own!
+          </p>
+        </div>
+      )}
     </div>
   );
 };
