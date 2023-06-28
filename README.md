@@ -1,7 +1,5 @@
 # Dynamic Form Builder
 
-# MSApps
-
 Dynamic Form Builder is an intuitive, user-friendly application that allows users to create, fill out, and submit custom forms with various field types, enforces field validation based on custom requirements, and displays the submitted data in a structured JSON format.
 
 ## Technologies
